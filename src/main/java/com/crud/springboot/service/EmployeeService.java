@@ -26,7 +26,7 @@ public class EmployeeService {
 		public Employee getEmployeeById(int empId) {
 			return employeeRepository.findById(empId).orElse(null);
 		}
-		public List<Employee> getEmployee(int pageNo, int recordCount) {
+		public List<Employee> getEmployee(int pageNo, int recordCount) { // pagination and sorting demonstration
 			Pageable pageable = PageRequest.of(pageNo, recordCount,Sort.by("empName"));
 			return employeeRepository.findAll(pageable).toList();
 		}
@@ -44,7 +44,7 @@ public class EmployeeService {
 		}
 		public String deleteEmployeeById(int empId) {
 			employeeRepository.deleteById(empId);
-			return "Employee got deleted";
+			return "Employee has been deleted";
 		}
 
 }
